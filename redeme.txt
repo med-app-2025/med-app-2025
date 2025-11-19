@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Med App 2025</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        video { width: 300px; height: 300px; border: 1px solid #ccc; }
+        #qr-result { margin-top: 20px; font-size: 18px; font-weight: bold; }
+        button { padding: 10px 20px; margin: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Med App 2025</h1>
+    <p>اضغطي الزر لفتح الكاميرا ومسح QR Code</p>
+
+    <video id="camera" autoplay></video>
+    <div id="qr-result">نتيجة QR تظهر هنا</div>
+    <button id="start-camera">فتح الكاميرا</button>
+
+    <!-- مكتبة QR Scanner -->
+    <script src="https://unpkg.com/html5-qrcode@2.3.9/minified/html5-qrcode.min.js"></script>
+    <script>
+        const startCameraBtn = document.getElementById('start-camera');
+        const qrResult = document.getElementById('qr-result')
