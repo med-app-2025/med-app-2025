@@ -23,4 +23,25 @@
     <script src="https://unpkg.com/html5-qrcode@2.3.9/minified/html5-qrcode.min.js"></script>
     <script>
         const startCameraBtn = document.getElementById('start-camera');
-        const qrResult = document.getElementById('qr-result')
+        const qrResult = document.getElementById('qr-result');
+
+        startCameraBtn.addEventListener('click', () => {
+            const html5QrCode = new Html5Qrcode("camera");
+            Html5Qrcode.getCameras().then(cameras => {
+                if (cameras && cameras.length) {
+                    html5QrCode.start(
+                        { facingMode: "environment" }, 
+                        { fps: 10, qrbox: 250 },
+                        qrCodeMessage => {
+                            qrResult.innerText = "QR Result: " + qrCodeMessage;
+                        },
+                        errorMessage => {
+                            console.log("QR Scan Error:", errorMessage);
+                        }
+                    );
+                }
+            }).catch(err => console.log(err));
+        });
+    </script>
+</body>
+</html>
