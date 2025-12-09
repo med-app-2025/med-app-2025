@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>تسجيل الحضور - PWA</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
+<div class="container" id="formContainer">
+  <h1>تسجيل الحضور</h1>
+  <h2>جامعة واسط - كلية الطب</h2>
+
+  <input type="text" id="name" placeholder="اسم الطالب">
+  <input type="text" id="subject" placeholder="اسم المادة">
+  <input type="text" id="place" placeholder="أين أنت الآن؟">
+
+  <button onclick="sendLocation()">سجل موقعي</button>
+
+  <div class="alert" id="messageAlert"></div>
+  <a id="googleMapLink" class="mapLink" target="_blank"></a>
+  <div id="map"></div>
+
+  <p class="footer">
+    إعداد: الدكتورة طيف القيسي<br>
+    اختصاص: أجنة بشري
+  </p>
+</div>
+<script src="app.js"></script>
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('service-worker.js')
+    .then(()=>console.log('Service Worker مسجل'))
+    .catch(err=>console.log('فشل تسجيل SW: '+err));
+}
+</script>
+</body>
+</html>
